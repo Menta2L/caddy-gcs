@@ -1,0 +1,31 @@
+test.com:80 {
+gcs {
+  match_path /
+  status_header X-Cache-Status
+  default_max_age 15m
+  path caddy-cache
+  bucket test-bg-pc-ae test-bg-f15cb0f207d5.json
+  bucket test-bg-pc-test test-bg-f15cb0f207d5.json
+    stats {
+          prometheus {
+              use_caddy_addr
+          }
+    }
+}
+}
+
+test.net:80 {
+gcs {
+  match_path /
+  status_header X-Cache-Status
+  default_max_age 15m
+  path caddy-cache
+  bucket test-bg-pc-ae test-bg-f15cb0f207d5.json
+  bucket test-bg-pc-test test-bg-f15cb0f207d5.json
+  stats {
+    prometheus {
+        use_caddy_addr
+    }
+  }
+}
+}
